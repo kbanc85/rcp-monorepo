@@ -1,0 +1,46 @@
+{
+  "manifest_version": 3,
+  "name": "RCP (Right-Click Prompt): AI Prompt Manager",
+  "version": "1.28.0",
+  "description": "Instantly save text as AI prompts with our floating icon selector: just highlight any text on a webpage and click the icon to save it. Efficiently organize and access your prompts via right-click menu, with smart auto-paste and dark/light theme support across all platforms.",
+  "permissions": [
+    "storage",
+    "contextMenus",
+    "clipboardWrite",
+    "sidePanel"
+  ],
+  "optional_permissions": [
+    "activeTab",
+    "scripting"
+  ],
+  "action": {
+    "default_icon": {
+      "16": "assets/icon16.png",
+      "48": "assets/icon48.png",
+      "128": "assets/icon128.png"
+    }
+  },
+  "side_panel": {
+    "default_path": "sidepanel.html"
+  },
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "content/floatingIcon.js"
+      ],
+      "run_at": "document_end"
+    }
+  ],
+  "icons": {
+    "16": "assets/icon16.png",
+    "48": "assets/icon48.png",
+    "128": "assets/icon128.png"
+  }
+}

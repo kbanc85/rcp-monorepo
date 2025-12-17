@@ -1,0 +1,24 @@
+{
+  "name": "rcp",
+  "private": true,
+  "version": "1.0.0",
+  "description": "RCP (Right-Click Prompt) - AI Prompt Manager monorepo",
+  "scripts": {
+    "dev:dashboard": "pnpm --filter @rcp/dashboard dev",
+    "dev:extension": "pnpm --filter @rcp/extension dev",
+    "build": "turbo run build",
+    "build:dashboard": "pnpm --filter @rcp/dashboard build",
+    "build:extension": "pnpm --filter @rcp/extension build",
+    "lint": "turbo run lint",
+    "typecheck": "turbo run typecheck",
+    "clean": "turbo run clean && rm -rf node_modules"
+  },
+  "devDependencies": {
+    "turbo": "^2.3.3",
+    "typescript": "^5.2.2"
+  },
+  "packageManager": "pnpm@9.0.0",
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

@@ -1,0 +1,337 @@
+/* Import Geist fonts */
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html, body {
+    @apply text-foreground;
+    font-family: 'Geist', system-ui, -apple-system, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #1B1B1B !important;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    height: 100%;
+    width: 100%;
+  }
+
+  #root {
+    @apply overflow-hidden;
+    background-color: #1B1B1B;
+    height: 100%;
+    width: 100%;
+  }
+
+  /* Premium scrollbar */
+  ::-webkit-scrollbar {
+    @apply w-1.5;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-border rounded-full hover:bg-border-hover;
+  }
+
+  /* Selection styling */
+  ::selection {
+    @apply bg-accent/30 text-foreground;
+  }
+}
+
+@layer components {
+  /* Glass morphism overlay */
+  .glass {
+    @apply bg-background-elevated/80 backdrop-blur-xl border border-white/5;
+  }
+
+  /* Noise texture overlay */
+  .noise-overlay {
+    position: relative;
+  }
+
+  .noise-overlay::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    opacity: 0.02;
+    pointer-events: none;
+    mix-blend-mode: overlay;
+  }
+
+  /* Accent glow effect */
+  .glow-accent {
+    box-shadow: 0 0 30px -10px theme('colors.accent.DEFAULT');
+  }
+
+  /* Folder card styling */
+  .folder-card {
+    @apply relative overflow-hidden rounded-xl;
+    @apply bg-background-secondary border border-border;
+    @apply transition-all duration-300 ease-spring;
+    @apply hover:border-border-hover hover:bg-background-tertiary;
+  }
+
+  /* Old dragging class - kept for compatibility */
+  .folder-card.dragging {
+    @apply opacity-70 scale-[1.02] shadow-elevated border-accent/30;
+  }
+
+  /* New @dnd-kit drag states */
+  .folder-card.is-dragging {
+    @apply opacity-40 scale-[0.98] border-dashed border-accent/30;
+    @apply bg-background-tertiary;
+  }
+
+  .is-dragging-prompt {
+    @apply opacity-40;
+  }
+
+  /* Floating overlay while dragging */
+  .dragging-overlay {
+    @apply shadow-elevated scale-[1.02] border-accent/50 !important;
+    @apply cursor-grabbing bg-background-secondary;
+    z-index: 1000;
+  }
+
+  .prompt-item.dragging-overlay {
+    @apply bg-background-elevated border border-accent/30 rounded-lg px-3 py-2;
+  }
+
+  /* Folder header */
+  .folder-header {
+    @apply flex items-center justify-between px-3 py-1.5;
+    @apply cursor-pointer select-none;
+    @apply transition-colors duration-200;
+  }
+
+  .folder-header:hover {
+    @apply bg-background-hover/50;
+  }
+
+  /* Prompt item styling */
+  .prompt-item {
+    @apply relative px-3 py-1.5 mx-2 mb-0.5 rounded-lg;
+    @apply bg-background-tertiary/50 border border-transparent;
+    @apply transition-all duration-200 ease-spring;
+    @apply hover:bg-background-hover hover:border-border;
+  }
+
+  .prompt-item.dragging {
+    @apply opacity-70 bg-background-elevated border-accent/30 shadow-lg;
+  }
+
+  /* Action buttons */
+  .action-text {
+    @apply text-2xs font-medium text-foreground-muted;
+    @apply transition-all duration-200;
+    @apply hover:text-foreground;
+  }
+
+  .action-text.delete {
+    @apply hover:text-error;
+  }
+
+  /* Toggle switch custom styling */
+  .toggle-track {
+    @apply relative w-9 h-5 rounded-full cursor-pointer;
+    @apply bg-background-hover transition-all duration-200;
+  }
+
+  .toggle-track.active {
+    @apply bg-accent shadow-glow-sm shadow-accent/50;
+  }
+
+  .toggle-thumb {
+    @apply absolute top-0.5 left-0.5 w-4 h-4 rounded-full;
+    @apply bg-foreground transition-transform duration-200 ease-spring;
+  }
+
+  .toggle-track.active .toggle-thumb {
+    @apply translate-x-4;
+  }
+
+  /* Search input */
+  .search-wrapper {
+    @apply relative flex items-center;
+  }
+
+  .search-input {
+    @apply w-full h-9 pl-9 pr-4 rounded-xl text-sm;
+    @apply bg-background-secondary border border-border;
+    @apply text-foreground placeholder:text-foreground-muted;
+    @apply transition-all duration-200;
+    @apply focus:outline-none focus:border-accent/50 focus:ring-2 focus:ring-accent/20;
+    @apply hover:border-border-hover hover:bg-background-tertiary;
+  }
+
+  .search-icon {
+    @apply absolute left-3 w-4 h-4 text-foreground-muted;
+  }
+
+  /* Toast notification - now handled by Toast component with framer-motion */
+  /* Legacy toast styles kept for compatibility */
+  .toast {
+    @apply flex items-center gap-2 px-4 py-2.5 rounded-xl;
+    @apply bg-background-elevated/95 backdrop-blur-lg border border-border;
+    @apply text-sm font-medium text-foreground shadow-elevated;
+  }
+
+  .toast.success {
+    @apply border-success/30;
+  }
+
+  .toast.success .toast-icon {
+    @apply text-success;
+  }
+
+  .toast.error {
+    @apply border-error/30;
+  }
+
+  .toast.error .toast-icon {
+    @apply text-error;
+  }
+
+  .toast.info {
+    @apply border-accent/30;
+  }
+
+  .toast.info .toast-icon {
+    @apply text-accent;
+  }
+
+  /* Reduced motion support */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  /* Modal styling */
+  .modal-overlay {
+    @apply fixed inset-0 z-50 bg-black/80 backdrop-blur-sm;
+    @apply flex items-center justify-center;
+    @apply animate-fade-in;
+  }
+
+  .modal-content {
+    @apply relative w-full max-w-sm mx-4 p-6 rounded-2xl;
+    @apply bg-background-elevated border border-border;
+    @apply shadow-elevated;
+    @apply animate-scale-in;
+  }
+
+  /* Accent line decoration */
+  .accent-line {
+    @apply h-0.5 w-12 rounded-full bg-gradient-to-r from-accent to-accent/50;
+  }
+
+  /* Card hover effect */
+  .card-hover {
+    @apply transition-all duration-300 ease-spring;
+    @apply hover:scale-[1.01] hover:shadow-elevated-sm;
+  }
+
+  /* Rotating logo */
+  .rotating-logo {
+    animation: gentleRotate 30s linear infinite;
+  }
+
+  @keyframes gentleRotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  /* Welcome modal logo spin */
+  .welcome-spin {
+    animation: spin 20s linear infinite;
+  }
+
+  /* Shimmer effect for loading states */
+  .shimmer {
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.05) 50%,
+      transparent 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 2s linear infinite;
+  }
+
+  /* Expand/collapse arrow - now animated with framer-motion */
+  .expand-arrow {
+    @apply w-4 h-4 text-foreground-muted;
+  }
+
+  /* Textarea styling */
+  .textarea-premium {
+    @apply w-full px-3 py-2 rounded-lg text-sm resize-none;
+    @apply bg-background-secondary border border-border;
+    @apply text-foreground placeholder:text-foreground-muted;
+    @apply transition-all duration-200;
+    @apply focus:outline-none focus:border-accent/50 focus:ring-2 focus:ring-accent/20;
+    @apply hover:border-border-hover;
+  }
+
+  /* Confetti canvas positioning */
+  canvas {
+    pointer-events: none !important;
+  }
+
+  /* Input field in edit mode */
+  .input-inline {
+    @apply px-2 py-1 rounded-md text-sm;
+    @apply bg-background-tertiary border border-accent/30;
+    @apply text-foreground;
+    @apply focus:outline-none focus:border-accent;
+  }
+
+  /* Subtle gradient background */
+  .gradient-bg {
+    background: radial-gradient(
+      ellipse at top,
+      rgba(255, 107, 74, 0.03) 0%,
+      transparent 50%
+    );
+  }
+}
+
+@layer utilities {
+  /* Text gradient */
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-accent to-accent-hover;
+  }
+
+  /* Fade edges */
+  .fade-edges {
+    mask-image: linear-gradient(
+      to bottom,
+      transparent 0%,
+      black 5%,
+      black 95%,
+      transparent 100%
+    );
+  }
+
+  /* Truncate with ellipsis */
+  .truncate-text {
+    @apply truncate max-w-full;
+  }
+}
