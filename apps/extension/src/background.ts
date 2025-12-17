@@ -1,6 +1,6 @@
-import type { Folder, SubscribedFolder } from "./types/types"
-import type { Prompt } from "./types/types"
-import { CONTEXT_MENU_IDS } from "./types/types"
+import type { Folder, SubscribedFolder } from "@rcp/types"
+import type { Prompt } from "@rcp/types"
+import { CONTEXT_MENU_IDS } from "@rcp/types"
 import { storageManager } from "./services/storage"
 
 // Safe async wrapper to prevent unhandled errors from crashing background script

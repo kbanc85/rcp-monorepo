@@ -2,8 +2,8 @@ import * as React from "react"
 import { useState, useCallback, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Check, AlertCircle, Info, X } from "lucide-react"
-import { cn } from "@/lib/utils"
-import { toastVariants } from "@/lib/animation-variants"
+import { cn } from "@rcp/utils"
+import { toastVariants } from "@rcp/utils"
 
 export type ToastType = 'success' | 'error' | 'info'
 

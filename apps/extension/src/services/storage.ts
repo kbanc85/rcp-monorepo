@@ -1,4 +1,4 @@
-import type { Folder, Prompt, SubscribedFolder, QuickAccessFolder } from '../types/types'
+import type { Folder, Prompt, SubscribedFolder, QuickAccessFolder } from '@rcp/types'
 
 // Storage keys
 export const STORAGE_KEYS = {

@@ -26,7 +26,7 @@ import {
   Mail,
   Lock
 } from 'lucide-react'
-import type { Folder, Prompt } from "./types/types"
+import type { Folder, Prompt } from "@rcp/types"
 import { storageManager } from "./services/storage"
 import {
   supabase,
@@ -44,7 +44,7 @@ import "./style.css"
 import React from "react"
 import confetti from 'canvas-confetti'
 import defaultPromptFolders from "./config/default-prompts.json"
-import { cn } from "@/lib/utils"
+import { cn } from "@rcp/utils"
 import { Button } from "@/components/ui/button"
 import { Switch } from "@/components/ui/switch"
 import { TooltipProvider, Tooltip, TooltipTrigger, TooltipContent } from "@/components/ui/tooltip"
@@ -60,7 +60,7 @@ import {
   modalContentVariants,
   shakeVariants,
   iconTapFeedback
-} from "@/lib/animation-variants"
+} from "@rcp/utils"
 
 // Delete Modal Component
 interface DeleteModalProps {

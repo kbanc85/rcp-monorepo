@@ -9,7 +9,7 @@ import { createClient } from "@/lib/supabase/client"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { pageVariants } from "@/lib/animation-variants"
+import { pageVariants } from "@rcp/utils"
 
 export default function LoginPage() {
   const [email, setEmail] = useState("")

@@ -29,7 +29,7 @@ import {
 } from "@dnd-kit/sortable"
 import { CSS } from "@dnd-kit/utilities"
 import { Button } from "@/components/ui/button"
-import { cn } from "@/lib/utils"
+import { cn } from "@rcp/utils"
 
 export interface QuickAccessItem {
   id: string

@@ -1,7 +1,7 @@
 import * as React from "react"
 import { motion } from "framer-motion"
 import { FolderOpen, Search, FileText } from "lucide-react"
-import { cn } from "@/lib/utils"
+import { cn } from "@rcp/utils"
 import { Button } from "./button"
 
 interface EmptyStateProps {

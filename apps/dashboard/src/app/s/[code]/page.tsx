@@ -18,7 +18,7 @@ import {
 } from "lucide-react"
 import { createClient } from "@/lib/supabase/client"
 import { Button } from "@/components/ui/button"
-import { pageVariants, itemVariants } from "@/lib/animation-variants"
+import { pageVariants, itemVariants } from "@rcp/utils"
 
 interface PromptPreview {
   id: string

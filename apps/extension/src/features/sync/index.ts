@@ -6,7 +6,7 @@
 
 import { createClient, RealtimeChannel } from '@supabase/supabase-js'
 import { SUPABASE_URL, SUPABASE_ANON_KEY } from '../../config/supabase'
-import type { QuickAccessFolder } from '../../types/types'
+import type { QuickAccessFolder } from '@rcp/types'
 
 // Create Supabase client
 export const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY)

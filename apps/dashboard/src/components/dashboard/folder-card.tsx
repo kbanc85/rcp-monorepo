@@ -19,8 +19,8 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip"
-import { accordionVariants, itemVariants } from "@/lib/animation-variants"
-import { cn } from "@/lib/utils"
+import { accordionVariants, itemVariants } from "@rcp/utils"
+import { cn } from "@rcp/utils"
 
 export interface Prompt {
   id: string

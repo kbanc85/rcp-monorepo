@@ -13,7 +13,7 @@ import { FolderDialog } from "@/components/dashboard/folder-dialog"
 import { PromptDialog } from "@/components/dashboard/prompt-dialog"
 import { DeleteDialog } from "@/components/dashboard/delete-dialog"
 import { ShareDialog } from "@/components/dashboard/share-dialog"
-import { pageVariants } from "@/lib/animation-variants"
+import { pageVariants } from "@rcp/utils"
 import {
   Dialog,
   DialogContent,

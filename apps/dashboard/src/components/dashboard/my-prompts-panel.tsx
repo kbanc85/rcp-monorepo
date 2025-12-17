@@ -13,7 +13,7 @@ import {
   FolderOpen,
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { cn } from "@/lib/utils"
+import { cn } from "@rcp/utils"
 
 export interface Prompt {
   id: string
